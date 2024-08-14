@@ -1,0 +1,12 @@
+[package]
+name = "chex"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+async-broadcast = "0.7.1"
+log = "0.4.22"
+
+[dev-dependencies]
+futures = "0.3.30"
+tokio = { version = "1.39", features = ["rt", "macros"] }
