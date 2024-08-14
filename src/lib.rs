@@ -29,6 +29,7 @@
 //! let ci_c = chex.get_instance();
 //! assert!(ci_c.poll_exit());
 //! ```
+#![forbid(unsafe_code)]
 
 use log::error;
 use std::sync::{Arc,OnceLock};
