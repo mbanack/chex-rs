@@ -4,7 +4,7 @@ use chex::Chex;
 fn init_chex_global_only() {
     let chex: &Chex = Chex::init(true);
 
-    assert_eq!(chex.poll_exit(), false);
+    assert!(!chex.poll_exit());
     chex.signal_exit();
-    assert_eq!(chex.poll_exit(), true);
+    assert!(chex.poll_exit());
 }

@@ -10,12 +10,14 @@ use std::sync::atomic::Ordering::Relaxed;
 
 pub static GLOBAL_CHECK_EXIT: Chex = Chex::const_default();
 
+type ChexPanicHandler = Box<dyn Fn(&std::panic::PanicHookInfo<'_>) + Sync + Send + 'static>;
+
 /*
  * Global handle to wrap ChexInstance.
  */
 pub struct Chex {
     cell: OnceLock<ChexInstance>,
-    default_panic_handler: OnceLock<Box<dyn Fn(&std::panic::PanicHookInfo<'_>) + Sync + Send + 'static>>
+    default_panic_handler: OnceLock<ChexPanicHandler>,
 }
 
 /*
@@ -43,7 +45,7 @@ impl Chex {
     /// to signal exit to all other Chex/ChexInstance listeners.  This can be enabled later with
     /// .set_exit_on_panic()
     pub fn init(set_exit_on_panic: bool) -> &'static Chex {
-        let _inst = GLOBAL_CHECK_EXIT.cell.get_or_init(|| ChexInstance::new());
+        let _inst = GLOBAL_CHECK_EXIT.cell.get_or_init(ChexInstance::new);
 
         GLOBAL_CHECK_EXIT.default_panic_handler.get_or_init(|| std::panic::take_hook());
 
@@ -51,7 +53,7 @@ impl Chex {
             GLOBAL_CHECK_EXIT.set_exit_on_panic();
         }
 
-        return &GLOBAL_CHECK_EXIT;
+        &GLOBAL_CHECK_EXIT
     }
 
     /// Setup a panic hook to signal exit to other threads.

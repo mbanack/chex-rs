@@ -32,9 +32,9 @@ fn thread_three(chex: ChexInstance) {
 #[test]
 fn multi_runtime_task_panic() {
     let chex: &Chex = Chex::init(false);
-    assert_eq!(chex.poll_exit(), false);
+    assert!(!chex.poll_exit());
     chex.set_exit_on_panic();
-    assert_eq!(chex.poll_exit(), false);
+    assert!(!chex.poll_exit());
 
     println!("main thread starting some other threads");
 
@@ -69,7 +69,7 @@ fn multi_runtime_task_panic() {
     let _ = th_two.join();
     let _ = th_three.join();
 
-    assert_eq!(chex.poll_exit(), true);
+    assert!(chex.poll_exit());
     let ci = chex.get_instance();
-    assert_eq!(ci.poll_exit(), true);
+    assert!(ci.poll_exit());
 }

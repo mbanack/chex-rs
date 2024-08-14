@@ -5,9 +5,9 @@ fn init_chex() {
     let chex: &Chex = Chex::init(true);
     let ci: ChexInstance = chex.get_instance();
 
-    assert_eq!(ci.poll_exit(), false);
-    assert_eq!(chex.poll_exit(), false);
+    assert!(!ci.poll_exit());
+    assert!(!chex.poll_exit());
     chex.signal_exit();
-    assert_eq!(ci.poll_exit(), true);
-    assert_eq!(chex.poll_exit(), true);
+    assert!(ci.poll_exit());
+    assert!(chex.poll_exit());
 }

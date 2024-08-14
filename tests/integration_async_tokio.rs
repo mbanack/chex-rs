@@ -5,9 +5,9 @@ use tokio::task::JoinSet;
 //#[should_panic]
 async fn tokio_tasks_signal_exit() {
     let chex: &Chex = Chex::init(false);
-    assert_eq!(chex.poll_exit(), false);
+    assert!(!chex.poll_exit());
     //chex.set_exit_on_panic();
-    assert_eq!(chex.poll_exit(), false);
+    assert!(!chex.poll_exit());
 
     let mut set = JoinSet::new();
 
@@ -65,7 +65,7 @@ async fn tokio_tasks_signal_exit() {
     //
     println!("done joining tasks...");
 
-    assert_eq!(chex.poll_exit(), true);
+    assert!(chex.poll_exit());
     let ci = chex.get_instance();
-    assert_eq!(ci.poll_exit(), true);
+    assert!(ci.poll_exit());
 }
