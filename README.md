@@ -1,12 +1,12 @@
-[![MIT License][license-shield]][license-url]
+[License]: LICENSE
+
+## chex -- the async/sync check exit signal
 
 <p align="center">
-    <a href="https://docs.rs/...">docs</a><br/>
+    <a href="https://docs.rs/chex/latest/chex">docs</a><br/>
     <a href="https://github.com/mbanack/chex-rs/examples">examples</a><br/>
     <a href="https://github.com/mbanack/chex-rs/issues/new?labels=bug">Report a bug</a><br/>
 </p>
-
-## chex -- the async/sync check exit signal
 
 Chex is a simple rust library which provides a global exit signal which can be easily shared between any/all threads and async tasks in a program.
 
