@@ -17,6 +17,8 @@
 //!
 //! ## Basic usage example
 //! ```
+//! use chex::{Chex,ChexInstance};
+//!
 //! let chex: &Chex = Chex::init(true);
 //! let ci_a: ChexInstance = Chex::get_chex_instance();
 //! let ci_b: ChexInstance = chex.get_instance();
