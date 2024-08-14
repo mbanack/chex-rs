@@ -2,6 +2,10 @@
 name = "chex"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+description = "Global exit signal library"
+repository = "https://github.com/mbanack/chex-rs"
+readme = "README.md"
 
 [dependencies]
 async-broadcast = "0.7.1"

@@ -8,7 +8,7 @@ use std::sync::{Arc,OnceLock};
 use std::sync::atomic::AtomicBool;
 use std::sync::atomic::Ordering::Relaxed;
 
-pub static GLOBAL_CHECK_EXIT: Chex = Chex::const_default();
+static GLOBAL_CHECK_EXIT: Chex = Chex::const_default();
 
 type ChexPanicHandler = Box<dyn Fn(&std::panic::PanicHookInfo<'_>) + Sync + Send + 'static>;
 
