@@ -1,6 +1,6 @@
 [License]: LICENSE
 
-## chex -- the async/sync check exit signal
+## chex -- async/sync check exit signal
 
 <p align="center">
     <a href="https://docs.rs/chex/latest/chex">docs</a><br/>
